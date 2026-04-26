@@ -1,0 +1,25 @@
+# EchoNav – Runtime configuration
+# Copy to your ROS2 workspace and reference with:
+#   ros2 launch echonav echonav.launch.py
+
+obstacle_detector:
+  ros__parameters:
+    danger_m:   0.8      # metres – triggers "DANGER" alert
+    warning_m:  1.5      # metres – triggers "WARNING" alert
+    clear_m:    2.5      # metres – triggers "CAUTION" alert
+    fps:        5.0      # depth processing rate
+
+scene_describer:
+  ros__parameters:
+    backend:       anthropic   # "anthropic" | "openai"
+    interval_s:    3.0         # seconds between API calls
+    jpeg_quality:  70          # JPEG quality (1–100) — lower = less bandwidth
+    resize_width:  640         # resize RGB frame to this width before API call
+
+tts_queue:
+  ros__parameters:
+    rate_wpm:            160   # words per minute
+    volume:              0.9   # 0.0 – 1.0
+    voice_id:            ""    # leave empty for system default
+    obstacle_cooldown_s: 2.0   # min seconds between same-zone alerts
+    scene_cooldown_s:    4.0   # min seconds between scene descriptions
